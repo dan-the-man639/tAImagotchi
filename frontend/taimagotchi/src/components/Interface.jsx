@@ -5,7 +5,7 @@ import { ReactTyped } from "react-typed";
 function Interface() {
 
     return (
-        <>
+        <div className='interface-display'>
             <div className='pet-display'>
                 <h1>Here is your pet</h1>
                 <video src={videoXD} autoPlay loop muted />
@@ -24,7 +24,7 @@ function Interface() {
                     loop
                 />
             </div>
-        </>
+        </div>
     );
 }
 

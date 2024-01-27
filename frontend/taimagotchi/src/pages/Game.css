@@ -1,33 +1,73 @@
+/* Game.css */
 * {
     padding: 0;
     margin: 0;
-}
-
-body,
-html {
+  }
+  
+  body, html {
     height: 100%;
-}
-
-.main-interface {
-    display: flex;
-    height: 100vh;
+  }
+  
+  .main-container {
+    position: relative;
     width: 100%;
-}
-
-.left-panel {
-    width: 25%;
-    /* reduced width */
+    height: 100%;
+  }
+  
+  .background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../assets/backgroundcute.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+  }
+  
+  .main-interface {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
     overflow: auto;
-    background: #F6F4F4;
+  }
+  
+  .top-panel {
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
     box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.2);
-}
-
-.right-panel {
-    width: 75%;
-    /* new section, adjust width as needed */
-    background-image: url(../assets/backgroundcute.jpg);
+    border: 1px solid orange;
+  }
+  
+  .bottom-panel {
+    width: 100vw;
+    height: 20vh;
+    border: 1px solid navy;
+  }
+  
+  .bottom-panel-inside {
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    background-image: url(../assets/dialogue-box-empty.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     overflow: auto;
-}
+    border: 1px solid red;
+  }
+  

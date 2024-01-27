@@ -13,7 +13,7 @@ function Stat() {
     { Type: "Satiation", Stat: 95 },
     { Type: "Hydration", Stat: 90 },
     { Type: "Energy", Stat: 85 },
-    { Type: "Sanity", Stat: 70 }
+    { Type: "Sanity", Stat: 90 }
   ];
   // useEffect(() => {
   //   fetch("url")
@@ -24,7 +24,7 @@ function Stat() {
 
 
   return (
-    <div>
+    <div className='stat-bar'>
       <StatBar statItem={statData[0].Type} hp={hpSatiation}  onSetHp={setHpSatiation} dif={statData[0].Stat - hpSatiation }/>
       <StatBar statItem={statData[1].Type} hp={hpHydration}  onSetHp={setHpHydration} dif={statData[1].Stat - hpHydration}/>
       <StatBar statItem={statData[2].Type} hp={hpEnergy}  onSetHp={setHpEnergy} dif={statData[2].Stat - hpEnergy}/>
