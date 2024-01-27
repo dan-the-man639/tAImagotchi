@@ -13,7 +13,7 @@ class Game:
         pass
     
     def update(self):
-        pass
+        print("Updating game...")
     
     
     

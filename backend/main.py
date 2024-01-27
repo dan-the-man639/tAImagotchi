@@ -1,15 +1,14 @@
-from dotenv import load_dotenv
 import os
 from fastapi import FastAPI
 import cohere
 from pet import Pet
 from game import Game
+import asyncio
 
-
-COHERE_KEY = os.getenv('COHERE')
-co = cohere.Client(COHERE_KEY)
 
 app = FastAPI()
+pet = Pet.create_from_state("pet_state.json")
+game = Game(pet)
 
 @app.get("/")
 async def read_root():
@@ -18,11 +17,11 @@ async def read_root():
 
 
 async def start_game():
-    pet = Pet.create_from_state("pet_state.json")
-    game = Game(pet)
     while game.is_running:
         # game logic
         game.update()
+        await asyncio.sleep(1)
+        
         
         
         
