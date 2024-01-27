@@ -1,14 +1,18 @@
+import numpy as np
 
 '''
 vital bins: zero, very low, low, high, full
 '''
 
+VITAL_DECREASE_STDEV = 2
+
 BASE_PROMPT = "You are a cute tamagotchi pet. In your short response, do not mention that you are a language model. "
 
 
 class Vital:
-    def __init__(self, value: int, bins: list):
+    def __init__(self, value: int, decrease_rate: int, bins: list):
         self.type_name = type(self).__name__
+        self.decrease_rate = decrease_rate # per game cycle
         self.value = value
         self.bins = bins
     
@@ -24,6 +28,7 @@ class Vital:
         return {
             "type_name": self.type_name,
             "value": self.value,
+            "decrease_rate": self.decrease_rate,
             "bins": self.bins
         }
     
@@ -40,10 +45,13 @@ class Vital:
     
     def get_complaint_prompt(self) -> str:
         return BASE_PROMPT + self.complaint_prompts[self.get_bin()]
+    
+    def decrease_random(self) -> None:
+        self.value = np.random.normal(self.decrease_rate, VITAL_DECREASE_STDEV)
 
 class Satiation(Vital):
-    def __init__(self, value: int, bins: list):
-        super().__init__(value, bins)
+    def __init__(self, value: int, decrease_rate: int, bins: list):
+        super().__init__(value, decrease_rate, bins)
         self.complaint_prompts = [
             "Say something that shows how hungry you are and that you might starve soon.",
             "Say something that shows that you are very hungry.",

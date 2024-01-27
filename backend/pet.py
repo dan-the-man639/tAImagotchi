@@ -53,4 +53,8 @@ class Pet:
             response = co.generate(prompt=complaint_prompt, temperature=0.9, stop_sequences=STOP_SEQUENCES)
             complaints.append(response[0].text)
         return complaints
+    
+    def decrease_random_vitals(self):
+        for vital in self.vitals:
+            vital.decrease_random()
 

@@ -6,6 +6,7 @@
         {
             "type_name": "Satiation",
             "value": 100,
+            "decrease_rate": 5,
             "bins": [0, 19, 59, 99, 100]
         }
     ]

@@ -13,7 +13,7 @@ class Game:
         pass
     
     def update(self):
-        print("Updating game...")
+        self.pet.decrease_random_vitals()
     
     
     

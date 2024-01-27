@@ -25,11 +25,8 @@ async def start_game():
     global counter
     while game.is_running:
         game.update()
-        counter += 1
-        await asyncio.sleep(1)
+        pet.print_state()
+        await asyncio.sleep(1) # seconds per game cycle
 
-app = FastAPI(lifespan=lifespan)
-
-@app.get("/")
-async def read_root():
-    return {"Hello": str(counter)}
+        
+        
