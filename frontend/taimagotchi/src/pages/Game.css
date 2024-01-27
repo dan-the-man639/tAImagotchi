@@ -1,0 +1,33 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body,
+html {
+    height: 100%;
+}
+
+.main-interface {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+.left-panel {
+    width: 25%;
+    /* reduced width */
+    overflow: auto;
+    background: #F6F4F4;
+    box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.right-panel {
+    width: 75%;
+    /* new section, adjust width as needed */
+    background-image: url(../assets/backgroundcute.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: auto;
+}
