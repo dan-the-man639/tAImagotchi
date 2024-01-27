@@ -15,12 +15,12 @@ counter = 0
 async def lifespan(app: FastAPI):
     global counter
     # Startup logic: Starting the game loop
-    task = asyncio.create_task(start_game())
+    task = asyncio.create_task(run_game())
     yield
     # Shutdown logic: Stopping the game loop
     task.cancel()
 
-async def start_game():
+async def run_game():
     global counter
     while game.is_running:
         game.update()

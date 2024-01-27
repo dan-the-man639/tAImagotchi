@@ -15,5 +15,8 @@ class Game:
     def update(self):
         self.pet.decrease_random_vitals()
     
+    def get_pet_state(self):
+        return self.pet.to_dict()
+    
     
     

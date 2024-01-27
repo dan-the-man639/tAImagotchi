@@ -6,7 +6,7 @@ vital bins: zero, very low, low, high, full
 
 VITAL_DECREASE_STDEV = 2
 
-BASE_PROMPT = "You are a cute tamagotchi pet. In your short response, do not mention that you are a language model. "
+BASE_PROMPT = "You are a cute tamagotchi pet. In your short response, do not mention that you are a language model. Say something that shows that {}"
 
 
 class Vital:
@@ -47,16 +47,17 @@ class Vital:
         return BASE_PROMPT + self.complaint_prompts[self.get_bin()]
     
     def decrease_random(self) -> None:
-        self.value = self.value - np.random.normal(self.decrease_rate, VITAL_DECREASE_STDEV)
+        decrease_amount = np.random.normal(self.decrease_rate, VITAL_DECREASE_STDEV)
+        self.value = max(0, np.floor(self.value - decrease_amount))
 
 class Satiation(Vital):
     def __init__(self, value: int, decrease_rate: int, bins: list):
         super().__init__(value, decrease_rate, bins)
         self.complaint_prompts = [
+            "Say something that shows that you starved to death."
             "Say something that shows how hungry you are and that you might starve soon.",
-            "Say something that shows that you are very hungry.",
             "Say something that shows you are kind of hungry.",
             "Say something that shows that you feel satiated.",
             "Say something that shows that you are extremely full and don't want to eat."
         ]
-        
+
