@@ -3,6 +3,7 @@ from vital import Vital
 import cohere
 import os
 from dotenv import load_dotenv
+import numpy as np
 
 load_dotenv()
 
