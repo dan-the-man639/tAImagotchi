@@ -11,7 +11,7 @@ COHERE_KEY = os.getenv('COHERE')
 co = cohere.Client(COHERE_KEY)
 
 STOP_SEQUENCES = ["\n"]
-ACTIVITIES_PROMPT = '{"activities": ["Eat cake", "Listen to NSYNC", "Watch Back to the Future", "Go to McDonald\'s Play Palace"]} Change the activities to nostalgic in the 1990s and early 2000s and only output the json. Only resond with json'
+ACTIVITIES_PROMPT = '{"activities": ["Eat cake", "Listen to NSYNC", "Watch Back to the Future", "Go to McDonald\'s Play Palace"]} Change the activities to nostalgic in the 1990s and early 2000s and only output json. Only resond with json.'
 
 class Pet:
     def __init__(self, name: str, is_alive: bool, age: int, vitals: list, chat_history: list):
@@ -65,6 +65,7 @@ class Pet:
         edited_text = response.text.replace("```", "").replace("json", "")
         try_again = True
         while try_again:
+            print(edited_text)
             try:
                 json_dict = json.loads(edited_text)
                 try_again = False

@@ -2,15 +2,18 @@ from pet import Pet
 
 
 class Game:
-    def __init__(self, pet: Pet):
-        self.pet = pet
+    def __init__(self):
         self.is_running = True
     
+    def reset(self):
+        self.pet = Pet.create_from_state("pet_state.json")
+    
     def start(self):
-        pass
+        self.is_running = True
+        
     
     def stop(self):
-        pass
+        self.is_running = False
     
     def update(self):
         self.pet.decrease_random_vitals()
