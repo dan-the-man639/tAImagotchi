@@ -23,6 +23,8 @@ class Vital:
         vital_dict.pop("type_name")
         if type_name == "Satiation":
             return Satiation(**vital_dict)
+        elif type_name == "Energy":
+            return Energy(**vital_dict)
          
     
     def to_dict(self) -> dict:
@@ -62,6 +64,17 @@ class Satiation(Vital):
             "Say something that shows you are kind of hungry.",
             "Say something that shows that you feel satiated.",
             "Say something that shows that you are extremely full and don't want to eat."
+        ]
+
+class Energy(Vital):
+    def __init__(self, value: int, decrease_rate: int, bins: list):
+        super().__init__(value, decrease_rate, bins)
+        self.complaint_prompts = [
+            "Say something that shows that you have fallen into deep slumber",
+            "Say something that shows that you are going to fall asleep any minute.",
+            "Say something that shows that you are really tired.",
+            "Say something that shows that you feel awake.",
+            "Say something that shows that you are full of engery."
         ]
     
     
