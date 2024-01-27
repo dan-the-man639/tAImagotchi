@@ -1,12 +1,14 @@
-# Running the Backend
+## Setting Up The Development Environment
 
-1. Go to Backend Directory
+Before running the application, you need to set up your development environment. Follow these steps to create a virtual environment and install the necessary dependencies.
+
+1. **Go to Backend Directory**
 
     ```bash
     cd backend
     ```
 
-2. **Create and Activate a Virtual Environment **
+2. **Create and Activate a Virtual Environment**
 
     - For Windows:
       ```cmd
@@ -22,9 +24,19 @@
 
 3. **Install the Requirements**
 
+    If you have a `requirements.txt` file, install the dependencies using:
+
     ```bash
     pip install -r requirements.txt
     ```
+
+    If you need to create a `requirements.txt` file, first install your dependencies as usual (e.g., `pip install fastapi uvicorn`). Then, freeze your installed packages:
+
+    ```bash
+    pip freeze > requirements.txt
+    ```
+
+    This command will generate a `requirements.txt` file with all the installed packages and their versions, which is crucial for maintaining a consistent development environment.
 
 ## Running the Application
 
@@ -32,6 +44,3 @@ To run the backend, use the following command:
 
 ```bash
 uvicorn main:app --reload
-```
-
-Once the application is running, it will be served at http://127.0.0.1:8000. You can access it using a web browser or any API testing tool.
