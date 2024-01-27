@@ -1,10 +1,11 @@
 class Vitals:
     def __init__(self, weight, height):
-        self.satiation
-        self.sanity
+        self.vitals = 
+    
+    def get_low(self, val):
+        for
         
 
-    def show(self):
         
 
 class Pet:
