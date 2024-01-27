@@ -3,22 +3,24 @@ import { useState, useEffect } from 'react';
 import StatBar from './StatBar'
 
 function Stat() {
-  // const [statData, setStatData] = useState([]);
+  const [statData, setStatData] = useState([
+    { Type: "Satiation", Stat: 100 },
+    { Type: "Hydration", Stat: 100 },
+    { Type: "Energy", Stat: 100 },
+    { Type: "Sanity", Stat: 100 }
+  ]);
   const [hpSatiation, setHpSatiation] = useState(100);
   const [hpHydration, setHpHydration] = useState(100);
   const [hpEnergy, setHpEnergy] = useState(100);
   const [hpSanity, setHpSanity] = useState(100);
 
-  const statData = [
-    { Type: "Satiation", Stat: 95 },
-    { Type: "Hydration", Stat: 90 },
-    { Type: "Energy", Stat: 85 },
-    { Type: "Sanity", Stat: 90 }
-  ];
   // useEffect(() => {
-  //   fetch("url")
+  //   fetch("http://127.0.0.1:8000/get-stats")
   //     .then(response => response.json())
-  //     .then(data => setStatData(data))
+  //     .then(data => {
+  //       setStatData(data);
+  //       console.log("data: ", data);
+  //     })
   //     .catch(error => console.error('Error fetching data:', error));
   // }, []);
 

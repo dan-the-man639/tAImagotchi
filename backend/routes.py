@@ -12,12 +12,12 @@ async def reset_stats():
 async def get_stats():
     stats = game.get_pet_state()
     vitals = stats["vitals"]
-    vital_stats = {vital["type_name"]: vital["value"] for vital in vitals}
+    vital_stats = [{"Type": vital["type_name"], "Stat": vital["value"]} for vital in vitals]
     return vital_stats
 
 @router.get("/generate-trigger")
 async def generate_trigger():
-    return "Generated trigger"
+    return game.get_random_complaint()
 
 @router.get("/handle-action")
 async def handle_action():

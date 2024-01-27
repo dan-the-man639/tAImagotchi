@@ -18,14 +18,14 @@ function Stat({ statItem, hp, onSetHp, dif }) {
 
 
 
-    // useEffect(() => {
-    //         const interval = setInterval(() => {
-    //             // Decrease HP every minute
-    //             onSetHp((prevHp) => (prevHp > currentHp ? prevHp - decreaseRate : currentHp));
-    //         }, 1000); // 60000 milliseconds = 1 minute
+    useEffect(() => {
+            const interval = setInterval(() => {
+                // Decrease HP every minute
+                onSetHp((prevHp) => (prevHp > currentHp ? prevHp - decreaseRate : currentHp));
+            }, 1000); // 60000 milliseconds = 1 minute
 
-    //         return () => clearInterval(interval);
-    // }, [hp]);
+            return () => clearInterval(interval);
+    }, []);
 
     useEffect(() => {
         setCurrentHp(hp + dif);

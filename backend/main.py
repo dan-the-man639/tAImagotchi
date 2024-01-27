@@ -7,6 +7,7 @@ import cohere
 from pet import Pet
 from game import Game
 import asyncio
+from fastapi.middleware.cors import CORSMiddleware
 
 
 from contextlib import asynccontextmanager
@@ -31,6 +32,14 @@ def get_game():
     return game
 
 app = FastAPI(lifespan=lifespan)
+# Set up CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],  # Allows all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods
+    allow_headers=["*"],  # Allows all headers
+)
 app.include_router(extra_router)
 
 @app.get("/")
