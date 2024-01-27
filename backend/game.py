@@ -21,4 +21,7 @@ class Game:
     def get_random_complaint(self):
         return self.pet.get_random_complaint()
     
+    def get_activities(self):
+        return self.pet.get_activities()
+    
     

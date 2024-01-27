@@ -19,7 +19,7 @@ class Pet:
         self.is_alive = is_alive
         self.age = age # days
         self.vitals = [Vital.create_from_dict(vital_dict) for vital_dict in vitals]
-        chat_history = chat_history
+        self.chat_history = chat_history
     
     @staticmethod
     def create_from_state(json_path: str) -> 'Pet':
@@ -62,10 +62,20 @@ class Pet:
             vital.decrease_random()
     
     def get_activities(self):
-        message = ACTIVITIES_PROMPT if self.chat_history.empty() else "generate anthother"
-        response = co.chat(message=message)
+        message = "generate another, only give the json" if self.chat_history else ACTIVITIES_PROMPT
+        response = co.chat(message=message, chat_history=self.chat_history)
+        edited_text = response.text.replace("```", "").replace("json", "")
+        try_again = True
+        while try_again:
+            try:
+                json_dict = json.loads(edited_text)
+                try_again = False
+            except:
+                response = co.chat(message=message, chat_history=self.chat_history)
+                edited_text = response.text.replace("```", "").replace("json", "")
         self.chat_history.append({"role": "USER", "text": message})
-        self.chat_history.append({"role": "CHATPOT", "text": response[0].text})
-        json_dict = json.loads(response[0].text)
-        for activity in json_dict["activities"]:
-            print(activity)
+        self.chat_history.append({"role": "CHATPOT", "text": edited_text})
+        print(edited_text)
+        
+        activities = [activity for activity in json_dict["activities"]]
+        return activities
