@@ -1,4 +1,12 @@
 /* Interface.css */
+.interface-display {
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    width: 75vw;
+    border: 1px solid blue;
+    height: 100%;
+}
 
 .pet-display {
     display: flex;
@@ -8,6 +16,7 @@
     background-color: transparent; /* Clear background */
     padding: 20px;
     height: 80vh;
+    border: 1px solid pink;
   }
   
   .pet-display h1 {
@@ -22,6 +31,18 @@
   }
   
   .dialog-box {
-    margin-top: 20px; /* Add space between the pet and the dialog box */
+    
+    width: 100%;
+    height: 20vw;
+    /* new section, adjust width as needed */
+    
+
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid red;
   }
   
