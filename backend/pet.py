@@ -34,6 +34,7 @@ class Pet:
             "name": self.name,
             "is_alive": self.is_alive,
             "age": self.age,
+            "emotion": self.emotion,
             "vitals": [vital.to_dict() for vital in self.vitals]
         }
 
