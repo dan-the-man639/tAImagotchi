@@ -88,7 +88,7 @@ class Happiness(Vital):
             "Say something that shows that you are beyond happy."
         ]
 
-class 
+
 
     
 

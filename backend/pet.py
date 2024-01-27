@@ -4,6 +4,7 @@ import cohere
 import os
 from dotenv import load_dotenv
 import numpy as np
+import random
 
 load_dotenv()
 
@@ -11,7 +12,7 @@ COHERE_KEY = os.getenv('COHERE')
 co = cohere.Client(COHERE_KEY)
 
 STOP_SEQUENCES = ["\n"]
-ACTIVITIES_PROMPT = '{"activities": ["Eat cake", "Listen to NSYNC", "Watch Back to the Future", "Go to McDonald\'s Play Palace"]} Change the activities to nostalgic in the 1990s and early 2000s and only output json. Only resond with json.'
+ACTIVITIES_PROMPT = '{"activities": ["Eat cake", "Listen to NSYNC", "Watch Back to the Future", "Go to McDonald\'s Play Palace"]} Change to some other nostalgic activities in the 1990s and early 2000s and only output json. Only resond with json.'
 
 class Pet:
     def __init__(self, name: str, is_alive: bool, age: int, emotion: int, vitals: list, chat_history: list):
@@ -62,19 +63,18 @@ class Pet:
     
     def get_activities(self):
         message = "generate another, only give the json" if self.chat_history else ACTIVITIES_PROMPT
-        response = co.chat(message=message, chat_history=self.chat_history)
+        response = co.chat(message=message, chat_history=self.chat_history, temperature=0.85)
         edited_text = response.text.replace("```", "").replace("json", "")
         try_again = True
         while try_again:
-            print(edited_text)
             try:
                 json_dict = json.loads(edited_text)
                 try_again = False
+                activities = [activity for activity in json_dict["activities"]]
             except:
                 response = co.chat(message=message, chat_history=self.chat_history)
                 edited_text = response.text.replace("```", "").replace("json", "")
         self.chat_history.append({"role": "USER", "text": message})
         self.chat_history.append({"role": "CHATPOT", "text": edited_text})
         
-        activities = [activity for activity in json_dict["activities"]]
         return activities
