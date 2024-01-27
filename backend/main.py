@@ -1,7 +1,7 @@
 import os
 from fastapi import FastAPI
 from routes import router as extra_router
-from shared import game, pet, counter  # Import game from the shared module
+from shared import game, counter  # Import game from the shared module
 
 import cohere
 from pet import Pet
