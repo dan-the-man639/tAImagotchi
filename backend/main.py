@@ -1,4 +1,12 @@
+from dotenv import load_dotenv
+import os
 from fastapi import FastAPI
+import cohere
+
+
+COHERE_KEY = os.getenv('COHERE')
+
+co = cohere.Client(COHERE_KEY)
 
 app = FastAPI()
 

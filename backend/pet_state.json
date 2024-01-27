@@ -1,0 +1,12 @@
+{
+    "name": "bob",
+    "is_alive": true,
+    "age": 20,
+    "vitals": [
+        {
+            "type_name": "Satiation",
+            "value": 100,
+            "bins": [0, 19, 59, 99, 100]
+        }
+    ]
+}
