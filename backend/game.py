@@ -18,5 +18,7 @@ class Game:
     def get_pet_state(self):
         return self.pet.to_dict()
     
+    def get_random_complaint(self):
+        return self.pet.get_random_complaint()
     
     

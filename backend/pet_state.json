@@ -9,5 +9,6 @@
             "decrease_rate": 5,
             "bins": [0, 19, 59, 99, 100]
         }
-    ]
+    ],
+    "chat_history": []
 }

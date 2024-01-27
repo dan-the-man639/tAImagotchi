@@ -15,6 +15,7 @@ class Vital:
         self.decrease_rate = decrease_rate # per game cycle
         self.value = value
         self.bins = bins
+        self.complaint_prompts = []
     
     @staticmethod
     def create_from_dict(vital_dict: dict) -> 'Vital':
@@ -40,10 +41,12 @@ class Vital:
     
     def get_bin(self) -> int:
         for idx, bin in enumerate(self.bins):
+            print(idx, bin)
             if self.value <= bin:
                 return idx
     
     def get_complaint_prompt(self) -> str:
+        print(self.complaint_prompts)
         return BASE_PROMPT + self.complaint_prompts[self.get_bin()]
     
     def decrease_random(self) -> None:
@@ -54,10 +57,12 @@ class Satiation(Vital):
     def __init__(self, value: int, decrease_rate: int, bins: list):
         super().__init__(value, decrease_rate, bins)
         self.complaint_prompts = [
-            "Say something that shows that you starved to death."
+            "Say something that shows that you starved to death.",
             "Say something that shows how hungry you are and that you might starve soon.",
             "Say something that shows you are kind of hungry.",
             "Say something that shows that you feel satiated.",
             "Say something that shows that you are extremely full and don't want to eat."
         ]
+    
+    
 
