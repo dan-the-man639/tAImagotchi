@@ -19,7 +19,8 @@ async def get_stats():
 @router.get("/get-state")
 async def get_state():
     stats = game.get_pet_state()
-    return stats
+    vital_stats = {"is_alive": stats["is_alive"], "emotion": stats["emotion"]}
+    return vital_stats
 
 @router.get("/generate-trigger")
 async def generate_trigger():

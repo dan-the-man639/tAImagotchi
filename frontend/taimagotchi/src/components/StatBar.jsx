@@ -19,16 +19,10 @@ function Stat({ statItem, value }) {
 
     return (
         <div>
-            <h2>{statItem}: {value}</h2>
-            <div style={{ border: '1px solid #ccc', width: '300px', borderRadius: '5px', overflow: 'hidden' }}>
-                <div
-                    style={{
-                        height: '20px',
-                        backgroundColor: 'green',
-                        transition: 'width 0.5s ease',
-                    }}
-                />
-            </div>
+            <h2 style={{
+                fontFamily: `'PressStart2P', sans-serif`,
+                fontSize: '20px',
+            }}>{statItem}: {value}</h2>
             
             <div style={{display: `flex`}}>
                 <img src={iconName} alt={`${statItem} icon`} 
