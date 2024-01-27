@@ -9,6 +9,8 @@ load_dotenv()
 COHERE_KEY = os.getenv('COHERE')
 co = cohere.Client(COHERE_KEY)
 
+STOP_SEQUENCES = ["\n"]
+
 class Pet:
     def __init__(self, name: str, is_alive: bool, age: int, vitals: list):
         self.name = name
@@ -48,7 +50,7 @@ class Pet:
         complaints = []
         for vital in self.vitals:
             complaint_prompt = vital.get_complaint_prompt()
-            response = co.generate(prompt=complaint_prompt, temperature=0.9)
+            response = co.generate(prompt=complaint_prompt, temperature=0.9, stop_sequences=STOP_SEQUENCES)
             complaints.append(response[0].text)
         return complaints
 

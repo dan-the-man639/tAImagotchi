@@ -5,6 +5,7 @@ vital bins: zero, very low, low, high, full
 
 BASE_PROMPT = "You are a cute tamagotchi pet. In your short response, do not mention that you are a language model. "
 
+
 class Vital:
     def __init__(self, value: int, bins: list):
         self.type_name = type(self).__name__
