@@ -9,6 +9,7 @@ class Game:
         self.pet = Pet.create_from_state("pet_state.json")
     
     def start(self):
+        self.reset()
         self.is_running = True
         
     
