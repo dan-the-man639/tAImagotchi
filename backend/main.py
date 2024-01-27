@@ -5,6 +5,7 @@ from pet import Pet
 from game import Game
 import asyncio
 
+
 from contextlib import asynccontextmanager
 
 pet = Pet.create_from_state("pet_state.json")
@@ -27,9 +28,15 @@ async def run_game():
         pet.print_state()
         await asyncio.sleep(1) # seconds per game cycle
 
+def get_game():
+    return game
+
 app = FastAPI(lifespan=lifespan)
 
 @app.get("/")
 async def read_root():
     return {"Hello": str(counter)}
         
+@app.get("/get-stats")
+async def getStats():
+    return {"Stats": game()}
