@@ -6,7 +6,7 @@ vital bins: zero, very low, low, high, full
 
 VITAL_DECREASE_STDEV = 2
 
-BASE_PROMPT = "You are a cute tamagotchi pet. In your short response, do not mention that you are a language model. Say something that shows that {}"
+BASE_PROMPT = "You are a cute tamagotchi pet. In your short response, do not mention that you are a language model and do not respond to the player. Say something that shows that"
 
 
 class Vital:
@@ -25,6 +25,8 @@ class Vital:
             return Satiation(**vital_dict)
         elif type_name == "Energy":
             return Energy(**vital_dict)
+        elif type_name == "Happiness":
+            return Happiness(**vital_dict)
          
     
     def to_dict(self) -> dict:
@@ -43,12 +45,10 @@ class Vital:
     
     def get_bin(self) -> int:
         for idx, bin in enumerate(self.bins):
-            print(idx, bin)
             if self.value <= bin:
                 return idx
     
     def get_complaint_prompt(self) -> str:
-        print(self.complaint_prompts)
         return BASE_PROMPT + self.complaint_prompts[self.get_bin()]
     
     def decrease_random(self) -> None:
@@ -76,6 +76,17 @@ class Energy(Vital):
             "Say something that shows that you feel awake.",
             "Say something that shows that you are full of engery."
         ]
-    
+
+class Happiness(Vital):
+    def __init__(self, value: int, decrease_rate: int, bins: list):
+        super().__init__(value, decrease_rate, bins)
+        self.complaint_prompts = [
+            "Say something that shows that you are extremely depressed.",
+            "Say something that shows that you are kind of sad.",
+            "Say something that shows that you are kind of happy.",
+            "Say something that shows that you are really happy.",
+            "Say something that shows that you are beyond happy."
+        ]
+
     
 

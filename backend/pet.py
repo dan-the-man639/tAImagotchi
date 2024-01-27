@@ -11,7 +11,7 @@ COHERE_KEY = os.getenv('COHERE')
 co = cohere.Client(COHERE_KEY)
 
 STOP_SEQUENCES = ["\n"]
-ACTIVITIES_PROMPT = '{"activities": ["Eat cake", "Listen to NSYNC", "Watch Back to the Future", "Go to McDonald\'s Play Palace"]} Change the activities to ones popular in the 1990s and early 2000s and only output the json. Only resond with json'
+ACTIVITIES_PROMPT = '{"activities": ["Eat cake", "Listen to NSYNC", "Watch Back to the Future", "Go to McDonald\'s Play Palace"]} Change the activities to nostalgic in the 1990s and early 2000s and only output the json. Only resond with json'
 
 class Pet:
     def __init__(self, name: str, is_alive: bool, age: int, vitals: list, chat_history: list):
@@ -43,8 +43,6 @@ class Pet:
     def print_state(self):
         print(self.to_dict())
 
-    def show(self):
-        print(f"I am {self.name} and I am {self.age} days old.")
     
     def get_vitals(self):
         return self.vitals
@@ -75,7 +73,6 @@ class Pet:
                 edited_text = response.text.replace("```", "").replace("json", "")
         self.chat_history.append({"role": "USER", "text": message})
         self.chat_history.append({"role": "CHATPOT", "text": edited_text})
-        print(edited_text)
         
         activities = [activity for activity in json_dict["activities"]]
         return activities
