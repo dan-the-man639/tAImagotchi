@@ -47,7 +47,7 @@ class Vital:
         return BASE_PROMPT + self.complaint_prompts[self.get_bin()]
     
     def decrease_random(self) -> None:
-        self.value = np.random.normal(self.decrease_rate, VITAL_DECREASE_STDEV)
+        self.value = self.value - np.random.normal(self.decrease_rate, VITAL_DECREASE_STDEV)
 
 class Satiation(Vital):
     def __init__(self, value: int, decrease_rate: int, bins: list):
