@@ -1,0 +1,27 @@
+/* Interface.css */
+
+.pet-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent; /* Clear background */
+    padding: 20px;
+    height: 80vh;
+  }
+  
+  .pet-display h1 {
+    margin-bottom: 20px;
+  }
+  
+  video {
+    width: 80%; /* Adjust the size of the video */
+    max-width: 400px; /* Maximum width for responsiveness */
+    border: 1px solid #ccc; /* Add a border for visibility */
+    border-radius: 10px; /* Optional: Add border-radius for rounded corners */
+  }
+  
+  .dialog-box {
+    margin-top: 20px; /* Add space between the pet and the dialog box */
+  }
+  
