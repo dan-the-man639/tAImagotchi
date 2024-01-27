@@ -2,6 +2,7 @@
     "name": "bob",
     "is_alive": true,
     "age": 20,
+    "emotion": 0,
     "vitals": [
         {
             "type_name": "Satiation",

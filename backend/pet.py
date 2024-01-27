@@ -14,10 +14,11 @@ STOP_SEQUENCES = ["\n"]
 ACTIVITIES_PROMPT = '{"activities": ["Eat cake", "Listen to NSYNC", "Watch Back to the Future", "Go to McDonald\'s Play Palace"]} Change the activities to nostalgic in the 1990s and early 2000s and only output json. Only resond with json.'
 
 class Pet:
-    def __init__(self, name: str, is_alive: bool, age: int, vitals: list, chat_history: list):
+    def __init__(self, name: str, is_alive: bool, age: int, emotion: int, vitals: list, chat_history: list):
         self.name = name
         self.is_alive = is_alive
         self.age = age # days
+        self.emotion = emotion
         self.vitals = [Vital.create_from_dict(vital_dict) for vital_dict in vitals]
         self.chat_history = chat_history
     
