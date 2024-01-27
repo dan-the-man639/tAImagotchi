@@ -1,6 +1,6 @@
 import './Interface.css'
 import videoXD from '../assets/neutralloop.mp4'
-import Typed from "react-typed";
+import { ReactTyped } from "react-typed";
 
 function Interface() {
 
@@ -13,7 +13,7 @@ function Interface() {
 
             <div className='dialog-box'>
                 <div>This is a paragraph</div>
-                <Typed
+                <ReactTyped
                     strings={[
                         "I'm a Full Stack Developer",
                         "I Love Software Development",
