@@ -87,11 +87,11 @@ class Pet:
     
     def get_activities(self):
         message = "generate another, only give the json" if self.chat_history else ACTIVITIES_PROMPT
-        response = co.chat(message=message, chat_history=self.chat_history, temperature=0.9)
-        edited_text = response.text.replace("```", "").replace("json", "")
         try_again = True
         while try_again:
             try:
+                response = co.chat(message=message, chat_history=self.chat_history, temperature=0.9)
+                edited_text = response.text.replace("```", "").replace("json", "")
                 json_dict = json.loads(edited_text)
                 try_again = False
                 activities = [activity for activity in json_dict["activities"]]
@@ -100,12 +100,12 @@ class Pet:
                 while len(activities) > 4:
                     activities.pop()
             except:
-                response = co.chat(message=message, chat_history=self.chat_history)
-                edited_text = response.text.replace("```", "").replace("json", "")
+                try_again = True
         self.chat_history.append({"role": "USER", "text": message})
-        self.chat_history.append({"role": "CHATPOT", "text": edited_text})
+        self.chat_history.append({"role": "CHATBOT", "text": edited_text})
         
         
         if random.random() < 0.4:
             activities[random.randint(0, len(activities) - 1)] = FOOD_ACTIVITIES[random.randint(0, len(FOOD_ACTIVITIES) - 1)]
+        print(len(activities))
         return activities
