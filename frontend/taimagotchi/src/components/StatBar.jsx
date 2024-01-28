@@ -18,17 +18,19 @@ function Stat({ statItem, value }) {
     console.log(iconName)
 
     return (
-        <div>
+        <div style={{paddingLeft: `2rem`, paddingTop: `1.5rem`}}>
             <h2 style={{
                 fontFamily: `'PressStart2P', sans-serif`,
                 fontSize: '20px',
+                color: `#fff`,
+                paddingBottom: `0.5rem`
             }}>{statItem}: {value}</h2>
             
             <div style={{display: `flex`}}>
                 <img src={iconName} alt={`${statItem} icon`} 
                     style={{
-                        height: '60px',
-                        width: '60px',
+                        height: '50px',
+                        width: '50px',
                         objectFit: `contain`
                     }}/>
                 <img src={imageName} alt={`${statItem} stat bar`} 
@@ -39,7 +41,6 @@ function Stat({ statItem, value }) {
                     }}/>
             </div>
 
-           
         </div>
     );
 }

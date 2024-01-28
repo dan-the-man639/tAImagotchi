@@ -5,9 +5,9 @@ import StatBar from './StatBar'
 function Stat() {
   const [statData, setStatData] = useState([
     { Type: "Satiation", Stat: 100 },
-    { Type: "Hydration", Stat: 100 },
     { Type: "Energy", Stat: 100 },
-    { Type: "Sanity", Stat: 100 }
+    { Type: "Happiness", Stat: 100 },
+    { Type: "Intellect", Stat: 100 }
   ]);
 
   // useEffect(() => {
