@@ -17,7 +17,7 @@ class Game:
         self.is_running = False
     
     def update(self):
-        self.pet.decrease_random_vitals()
+        self.pet.change_random_vitals()
     
     def get_pet_state(self):
         return self.pet.to_dict()
