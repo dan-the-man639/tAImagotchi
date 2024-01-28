@@ -6,18 +6,25 @@ router = APIRouter()
 
 @router.get("/reset-stats")
 async def reset_stats():
-    return "Reset stats"
+    game.reset()
+    return "Game has been reset"
 
 @router.get("/get-stats")
 async def get_stats():
     stats = game.get_pet_state()
     vitals = stats["vitals"]
-    vital_stats = {vital["type_name"]: vital["value"] for vital in vitals}
+    vital_stats = [{"Type": vital["type_name"], "Stat": vital["value"]} for vital in vitals]
+    return vital_stats
+
+@router.get("/get-state")
+async def get_state():
+    stats = game.get_pet_state()
+    vital_stats = {"is_alive": stats["is_alive"], "emotion": stats["emotion"]}
     return vital_stats
 
 @router.get("/generate-trigger")
 async def generate_trigger():
-    return "Generated trigger"
+    return game.get_random_complaint()
 
 @router.get("/handle-action")
 async def handle_action():
