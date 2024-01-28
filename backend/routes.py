@@ -29,7 +29,9 @@ async def generate_trigger():
 
 @router.get("/generate-options")
 async def generate_options():
-    return game.get_activities()
+    options =  game.get_activities()
+    print(options)
+    return options
 
 
 class ActionRequest(BaseModel):
