@@ -45,6 +45,9 @@ class Vital:
     def get_value(self) -> int:
         return self.value
     
+    def set_change_rate(self, change_rate: int) -> None:
+        self.change_rate = change_rate
+    
     def set_value(self, value: int) -> None:
         floored_value = min(100, max(0, np.floor(value)))
         self.value = floored_value
@@ -83,6 +86,12 @@ class Energy(Vital):
             "that you feel moderately awake.",
             "that you are extremely full of energy."
         ]
+    def change_random(self) -> None:
+        change_amount = np.random.normal(self.change_rate, VITAL_DECREASE_STDEV)
+        raw_value = np.floor(self.value - change_amount)
+        raw_value = max(raw_value, 0)
+        raw_value = min(raw_value, 100)
+        self.value = raw_value
 
 class Happiness(Vital):
     def __init__(self, value: int, change_rate: int, bins: list):

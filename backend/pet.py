@@ -28,6 +28,8 @@ INTELLECT_AVG_PROJ = 0.17589
 
 AVG_PROJ_LENS = [SATIATION_AVG_PROJ, ENERGY_AVG_PROJ, HAPPINESS_AVG_PROJ, INTELLECT_AVG_PROJ]
 
+VITAL_DEFAULT_CHANGE_RATE = 5
+
 class Pet:
     def __init__(self, name: str, is_alive: bool, age: int, emotion: int, vitals: list, chat_history: list):
         self.name = name
@@ -36,6 +38,7 @@ class Pet:
         self.emotion = emotion
         self.vitals = [Vital.create_from_dict(vital_dict) for vital_dict in vitals]
         self.chat_history = chat_history
+        self.vital_change_rate = VITAL_DEFAULT_CHANGE_RATE
     
     @staticmethod
     def create_from_state(json_path: str) -> 'Pet':
@@ -49,7 +52,8 @@ class Pet:
             "is_alive": self.is_alive,
             "age": self.age,
             "emotion": self.emotion,
-            "vitals": [vital.to_dict() for vital in self.vitals]
+            "vitals": [vital.to_dict() for vital in self.vitals],
+            "vital_change_rate": self.vital_change_rate
         }
 
     def dump_state(self, json_path):
@@ -90,10 +94,20 @@ class Pet:
         return response_text
     
     def change_random_vitals(self):
+        depression_factor = self.vitals[1].get_bin()
         for vital in self.vitals:
+            if (vital.get_type_name() != "Energy"):
+                vital.set_change_rate(VITAL_DEFAULT_CHANGE_RATE - depression_factor)
             vital.change_random()
     
-    def get_activities(self):
+    def get_activities(self) -> list:
+        if self.vitals[1].get_bin() == 0:
+            return []
+        elif self.vitals[1].get_bin() == 1 and random.random() < 0.5:
+            return []
+        elif self.vitals[1].get_bin() == 2 and random.random() < 0.2:
+            return []
+            
         message = "generate another, only give the json" if self.chat_history else ACTIVITIES_PROMPT
         try_again = True
         while try_again:
@@ -121,9 +135,9 @@ class Pet:
     def handle_activity(self, activity: str) -> None:
         activity_proj_lens = calculate_proj_len(activity)
         for idx, vital in enumerate(self.vitals):
-            over = max(0, activity_proj_lens[idx] - AVG_PROJ_LENS[idx])
+            over = max(-0.05, activity_proj_lens[idx] - AVG_PROJ_LENS[idx])
             if vital.get_type_name == "Energy":
-                vital.set_value(vital.get_value() - over * 30)
+                vital.set_value(vital.get_value() - over * 40)
             else:
-                vital.set_value(vital.get_value() + over * 30)
+                vital.set_value(vital.get_value() + over * 40)
             
