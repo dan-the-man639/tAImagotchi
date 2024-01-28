@@ -12,9 +12,13 @@ COHERE_KEY = os.getenv('COHERE')
 co = cohere.Client(COHERE_KEY)
 
 END_SEQUENCES = ["How", "There", "Would"]
-ACTIVITIES_PROMPT = '{"activities": ["Eat cake", "Listen to NSYNC", "Watch Back to the Future", "Go to McDonald\'s Play Palace"]} Change to some other nostalgic activities in the 1990s and early 2000s and only output json. Only resond with json.'
+ACTIVITIES_PROMPT = '{"activities": ["Eat McDonald\'s", "Listen to NSYNC", "Watch Back to the Future", "Go to McDonald\'s Play Palace"]} Change to some other nostalgic activities in the 1990s and early 2000s and only output json. Only resond with json.'
 
 BANNED_PHRASES = ["language", "model", "cohere", "request", "sure"]
+
+with open("food_activities.json", "r") as file:
+    data = json.load(file)
+    FOOD_ACTIVITIES = data["food_activities"]
 
 class Pet:
     def __init__(self, name: str, is_alive: bool, age: int, emotion: int, vitals: list, chat_history: list):
@@ -91,10 +95,17 @@ class Pet:
                 json_dict = json.loads(edited_text)
                 try_again = False
                 activities = [activity for activity in json_dict["activities"]]
+                while len(activities) < 4:
+                    activities.append(FOOD_ACTIVITIES[random.randint(0, len(FOOD_ACTIVITIES) - 1)])
+                while len(activities) > 4:
+                    activities.pop()
             except:
                 response = co.chat(message=message, chat_history=self.chat_history)
                 edited_text = response.text.replace("```", "").replace("json", "")
         self.chat_history.append({"role": "USER", "text": message})
         self.chat_history.append({"role": "CHATPOT", "text": edited_text})
-        print(activities)
+        
+        
+        if random.random() < 0.4:
+            activities[random.randint(0, len(activities) - 1)] = FOOD_ACTIVITIES[random.randint(0, len(FOOD_ACTIVITIES) - 1)]
         return activities
