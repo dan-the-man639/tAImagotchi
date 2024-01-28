@@ -62,7 +62,7 @@ function Option() {
         <div className='option-main'>
             <h1>Option box</h1>
             <div className="button-display">
-                {temp.map((item, index) => (
+                {option.map((item, index) => (
                     <button className='option-item' onClick={() => handleOnClick(item)} key={index}>{item}</button>
                 ))}
             </div>
