@@ -4,7 +4,7 @@ import numpy as np
 vital bins: zero, very low, low, high, full
 '''
 
-VITAL_DECREASE_STDEV = 1
+VITAL_DECREASE_STDEV = 0.5
 
 BASE_PROMPT = "Act as if you are a cute pet. Say something that shows"
 END_PROMPT = "Wrap the quote in quotation marks. Do not say sure thing."

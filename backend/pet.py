@@ -85,7 +85,7 @@ class Pet:
                 end_quote_idx = response_text.find("\"")
                 response_text = response_text[:end_quote_idx]
                 
-                lower_case_response = response_text
+                lower_case_response = response_text.lower()
                 for phrase in BANNED_PHRASES:
                     if phrase in lower_case_response or len(response_text) > 200:
                         do_next = True
@@ -142,9 +142,11 @@ class Pet:
     def handle_activity(self, activity: str) -> None:
         activity_proj_lens = calculate_proj_len(activity)
         for idx, vital in enumerate(self.vitals):
-            over = max(-0.05, activity_proj_lens[idx] - AVG_PROJ_LENS[idx])
+            over = activity_proj_lens[idx] - AVG_PROJ_LENS[idx]
+            if over < 0:
+                continue
             if vital.get_type_name == "Energy":
-                vital.set_value(vital.get_value() - over * 40)
+                vital.set_value(vital.get_value() - over * 50)
             else:
-                vital.set_value(vital.get_value() + over * 40)
+                vital.set_value(vital.get_value() + over * 100)
             
