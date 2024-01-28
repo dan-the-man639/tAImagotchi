@@ -28,4 +28,7 @@ class Game:
     def get_activities(self):
         return self.pet.get_activities()
     
+    def handle_action(self, action):
+        return self.pet.handle_action(action)
+    
     

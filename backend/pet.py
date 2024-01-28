@@ -20,6 +20,11 @@ with open("food_activities.json", "r") as file:
     data = json.load(file)
     FOOD_ACTIVITIES = data["food_activities"]
 
+SATIATION_AVG_PROJ = 0.20262
+ENERGY_AVG_PROJ = 0.20349
+HAPPINESS_AVG_PROJ = 0.23083
+INTELLECT_AVG_PROJ = 0.17589
+
 class Pet:
     def __init__(self, name: str, is_alive: bool, age: int, emotion: int, vitals: list, chat_history: list):
         self.name = name
@@ -109,3 +114,6 @@ class Pet:
             activities[random.randint(0, len(activities) - 1)] = FOOD_ACTIVITIES[random.randint(0, len(FOOD_ACTIVITIES) - 1)]
         print(len(activities))
         return activities
+    
+    def handle_interaction(self, activity: str) -> None:
+        
