@@ -1,25 +1,16 @@
-@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
 
-* {
-    padding: 0;
-    margin: 0;
-}
-
-body,
-html {
+.mainContainer {
     height: 100%;
-    font-family: 'Press Start 2P';
+    font-family: 'PressStart2P';
     background-color: #ffe1de;
     overflow: hidden;
 
 }
 
-h1 {
-    color: black;
-    font-size: 16vh;
-}
 
 .title {
+    color: black;
+    font-size: 16vh;
     margin-top: 10vh;
     position:absolute;
     left: 50%;
@@ -37,7 +28,7 @@ h1 {
 }
 
 button {
-    font-family: 'Press Start 2P';
+    font-family: 'PressStart2P';
     background-color: transparent;
     border: transparent;
     display: block;
