@@ -26,6 +26,10 @@ async def get_state():
 async def generate_trigger():
     return game.get_random_complaint()
 
-@router.get("/handle-action")
+@router.get("/generate-options")
+async def generate_options():
+    return game.get_activities()
+
+@router.post("/handle-action")
 async def handle_action():
     return "Handled action"
