@@ -18,7 +18,7 @@ function Stat({ statItem, value }) {
  
 
     return (
-        <div style={{paddingLeft: `4rem`, paddingTop: `1.25rem`, border: `3px solid red`}}>
+        <div style={{paddingLeft: `4rem`, paddingTop: `1.25rem`}}>
             <h2 style={{
                 fontFamily: `'PressStart2P', sans-serif`,
                 fontSize: '20px',

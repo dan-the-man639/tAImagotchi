@@ -1,6 +1,7 @@
 .stat-bar {
     padding-top: 3rem;
-    width: 50rem;
+    width: 60rem;
+    height: 35rem;
 
     align-content: center;
     background-image: url(../assets/statbox.png);
@@ -10,5 +11,6 @@
     background-position: center;
     overflow: visible;
     box-sizing: border-box;
-    border: 3px solid red;
+    /* border: 3px solid blue; */
+    opacity: 0.75;
 }
