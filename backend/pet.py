@@ -87,7 +87,7 @@ class Pet:
                 
                 lower_case_response = response_text.lower()
                 for phrase in BANNED_PHRASES:
-                    if phrase in lower_case_response or len(response_text) > 200:
+                    if phrase in lower_case_response or len(response_text) > 180:
                         do_next = True
                 if not do_next:
                     try_again = False
@@ -143,10 +143,16 @@ class Pet:
         activity_proj_lens = calculate_proj_len(activity)
         for idx, vital in enumerate(self.vitals):
             over = activity_proj_lens[idx] - AVG_PROJ_LENS[idx]
-            if over < 0:
-                continue
-            if vital.get_type_name == "Energy":
+            if over > 0 and vital.get_type_name() == "Energy":
                 vital.set_value(vital.get_value() - over * 50)
-            else:
+            elif over > 0 and vital.get_type_name() == "Satiation":
+                vital.set_value(vital.get_value() + over * 200)
+            elif ("play" in activity.lower() or "watch" in activity.lower()) and vital.get_type_name() == "Happiness":
+                vital.set_value(vital.get_value() + 40)
+            elif "listen" in activity.lower() and vital.get_type_name() == "Intellect":
+                vital.set_value(vital.get_value() + 40)
+            elif vital.get_type_name() == "Energy":
+                vital.set_value(vital.get_value() - 10)
+            elif over > 0:
                 vital.set_value(vital.get_value() + over * 100)
             

@@ -24,7 +24,7 @@ class Game:
             self.pet.is_alive = False
             self.is_running = False
         self.pet.change_random_vitals()
-        
+        print("hello")
     
     def get_pet_state(self):
         return self.pet.to_dict()

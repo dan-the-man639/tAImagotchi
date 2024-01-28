@@ -25,7 +25,7 @@ async def run_game():
     global counter
     game.start()
     while game.is_running:
-        await game.update()
+        game.update()
         await asyncio.sleep(4) # seconds per game cycle
 
 def get_game():
