@@ -39,11 +39,15 @@ class Vital:
             "bins": self.bins
         }
     
+    def get_type_name(self) -> str:
+        return self.type_name
+    
     def get_value(self) -> int:
         return self.value
     
     def set_value(self, value: int) -> None:
-        self.value = value
+        floored_value = min(100, max(0, np.floor(value)))
+        self.value = floored_value
     
     def get_bin(self) -> int:
         for idx, bin in enumerate(self.bins):

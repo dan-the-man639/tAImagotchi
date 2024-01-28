@@ -28,4 +28,7 @@ class Game:
     def get_activities(self):
         return self.pet.get_activities()
     
+    def handle_activity(self, activity: str) -> None:
+        return self.pet.handle_activity(activity)
+    
     

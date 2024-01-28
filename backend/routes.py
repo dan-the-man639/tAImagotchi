@@ -29,7 +29,9 @@ async def generate_trigger():
 
 @router.get("/generate-options")
 async def generate_options():
-    return game.get_activities()
+    options =  game.get_activities()
+    print(options)
+    return options
 
 
 class ActionRequest(BaseModel):
@@ -38,5 +40,5 @@ class ActionRequest(BaseModel):
 @router.post("/handle-action")
 async def handle_action(request: ActionRequest):
     action_string = request.action
-    # Waiting for Ricky's code
+    game.handle_activity(action_string)
     return {"message": "Action received"}
