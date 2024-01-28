@@ -3,7 +3,7 @@ import { ReactTyped } from "react-typed";
 import { useState, useEffect } from "react";
 
 function TriggerBox() {
-    const [text, setText] = useState("Hello, my nane is Tai, I am a Taimagotchi. Please take care of me!");
+    const [text, setText] = useState("Hello, my name is Tai, I am a Taimagotchi. Please take care of me!");
     let second = 20 * 1000;
 
     const fetchDataPrompt = async () => {
