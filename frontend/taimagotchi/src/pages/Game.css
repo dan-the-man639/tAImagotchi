@@ -20,6 +20,7 @@
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: -1;
   }
   
   .background-image {
@@ -64,10 +65,16 @@
     height: 100%;
     align-content: center;
     background-image: url(../assets/dialogue-box-empty.png);
-    background-size: contain;
+    background-size: 500px 150px;
+    /* background-size: contain; */
     background-repeat: no-repeat;
     background-position: center;
     overflow: auto;
     border: 1px solid red;
   }
   
+  button {
+    z-index: 200;
+    background-color: red;
+    color: red;
+  }
