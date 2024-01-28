@@ -12,17 +12,16 @@ function Stat({ statItem, value }) {
 
     imageName = imageBasePath + "bar" + "_" + partitionValue + ".png";
 
-    console.log(imageName);
+   
 
     let iconName = imageBasePath + statItem + "_icon.png";
-    console.log(iconName)
+ 
 
     return (
-        <div style={{paddingLeft: `2rem`, paddingTop: `1.25rem`}}>
+        <div style={{paddingLeft: `4rem`, paddingTop: `1.25rem`}}>
             <h2 style={{
                 fontFamily: `'PressStart2P', sans-serif`,
                 fontSize: '20px',
-                color: `#fff`,
                 paddingBottom: `0.5rem`
             }}>{statItem}: {value}</h2>
             
