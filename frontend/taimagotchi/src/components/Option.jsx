@@ -1,7 +1,7 @@
 import './Option.css'
 import { useState, useEffect } from 'react';
 
-function Option() {
+function Option({ onTextChange }) {
     const [option, setOption] = useState(['option 1', 'option 2', 'option 3', 'option 4']);
 
     // // fetch request and save data

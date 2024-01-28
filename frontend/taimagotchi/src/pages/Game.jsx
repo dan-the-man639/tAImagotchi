@@ -2,8 +2,12 @@ import Stat from '../components/Stat';
 import Interface from '../components/Interface';
 import './Game.css'
 import Option from '../components/Option';
+import TriggerBox from '../components/TriggerBox';
+
+import { useState, useEffect } from 'react';
 
 function Game() {
+  const [text, setText] = useState("");
 
   return (
     <div>
@@ -16,13 +20,11 @@ function Game() {
           <div className='top-panel'>
             <Stat />
             <Interface />
-            <Option />
+            <Option onTextChange={setText}/>
           </div>
 
           <div className='bottom-panel'>
-            <div className='bottom-panel-inside'>
-              This is a paragraph
-            </div>
+            <TriggerBox text={text} setText={setText} /> {/* Pass text and setText to TriggerBox */}
           </div>
         </div>
       </div>
