@@ -59,6 +59,8 @@ function Interface() {
       // Check if the result indicates a change in mood
       if (result && result.is_alive && result.emotion !== result.emotion) {
         handleMoodChange(result.mood);
+      } else if(result.is_alive == false){
+        let aliveStatus = false
       }
 
       setData(result);
