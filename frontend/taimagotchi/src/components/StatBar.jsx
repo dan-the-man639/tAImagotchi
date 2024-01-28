@@ -18,7 +18,7 @@ function Stat({ statItem, value }) {
     console.log(iconName)
 
     return (
-        <div style={{paddingLeft: `2rem`, paddingTop: `1.5rem`}}>
+        <div style={{paddingLeft: `2rem`, paddingTop: `1.25rem`}}>
             <h2 style={{
                 fontFamily: `'PressStart2P', sans-serif`,
                 fontSize: '20px',
@@ -31,7 +31,8 @@ function Stat({ statItem, value }) {
                     style={{
                         height: '50px',
                         width: '50px',
-                        objectFit: `contain`
+                        objectFit: `contain`,
+                        paddingRight: `0.25rem`
                     }}/>
                 <img src={imageName} alt={`${statItem} stat bar`} 
                     style={{
