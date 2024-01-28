@@ -18,11 +18,10 @@ function Stat({ statItem, value }) {
  
 
     return (
-        <div style={{paddingLeft: `2rem`, paddingTop: `1.25rem`}}>
+        <div style={{paddingLeft: `4rem`, paddingTop: `1.25rem`, border: `3px solid red`}}>
             <h2 style={{
                 fontFamily: `'PressStart2P', sans-serif`,
                 fontSize: '20px',
-                color: `#fff`,
                 paddingBottom: `0.5rem`
             }}>{statItem}: {value}</h2>
             
