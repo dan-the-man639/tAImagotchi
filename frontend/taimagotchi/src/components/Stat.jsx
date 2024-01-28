@@ -16,7 +16,7 @@ function Stat() {
         .then(response => response.json())
         .then(data => {
           setStatData(data);
-          console.log("data: ", data);
+          
         })
         .catch(error => console.error('Error fetching data:', error));
     };

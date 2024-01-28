@@ -6,8 +6,19 @@
   
   button {
     padding: 10px;
+    height: 10vh;
+    font-size: 10px;
+
+    background-image: url(../assets/optionsbox.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
   
   button:hover {
     background-color: #45a049;
+  }
+
+  .option-main{
+    width: 60vw;
   }

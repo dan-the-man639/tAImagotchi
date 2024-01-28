@@ -12,10 +12,10 @@ function Stat({ statItem, value }) {
 
     imageName = imageBasePath + "bar" + "_" + partitionValue + ".png";
 
-    console.log(imageName);
+   
 
     let iconName = imageBasePath + statItem + "_icon.png";
-    console.log(iconName)
+ 
 
     return (
         <div style={{paddingLeft: `2rem`, paddingTop: `1.25rem`}}>

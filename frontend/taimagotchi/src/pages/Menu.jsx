@@ -46,7 +46,7 @@ function Menu() {
 
       <div class="options">
         <div>
-          <button class="play" onClick={goToHomePage}>
+          <button class="play menu-button" onClick={goToHomePage}>
             PLAY
           </button>
           <img
@@ -56,7 +56,7 @@ function Menu() {
           />
         </div>
         <div>
-          <button class="settings">SETTINGS</button>
+          <button class="settings menu-button">SETTINGS</button>
           <img
             class="settingarrow"
             src={require("../assets/arrowpoint.png")}
@@ -64,7 +64,7 @@ function Menu() {
           />
         </div>
         <div>
-          <button class="quit" onClick={handleQuit}>
+          <button class="quit menu-button" onClick={handleQuit}>
             QUIT
           </button>
           <img
