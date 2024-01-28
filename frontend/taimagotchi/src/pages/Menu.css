@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body,
+html {
+    height: 100%;
+    font-family: 'Press Start 2P';
+    background-color: #ffe1de;
+    overflow: hidden;
+
+}
+
+h1 {
+    color: black;
+    font-size: 16vh;
+}
+
+.title {
+    margin-top: 10vh;
+    position:absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.maintama {
+    float: right;
+    padding-right: 10vw;
+    position: absolute;
+    top: 52%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-30%);
+    left: 65%;
+}
+
+button {
+    font-family: 'Press Start 2P';
+    background-color: transparent;
+    border: transparent;
+    display: block;
+    font-size: 8vh;
+    padding-bottom: 10vh;
+}
+
+.options {
+    position: absolute; 
+    top: 42vh;
+    left: 35vh;
+    
+}
+
+.playarrow {
+    position:absolute;
+    left: -10vh;
+    top:0vh;
+    visibility: hidden;
+}
+
+.play:hover + .playarrow{
+    visibility: visible;
+}
+
+.settingarrow {
+    position:absolute;
+    left: -10vh;
+    top:18vh;
+    visibility: hidden;
+}
+
+.settings:hover + .settingarrow{
+    visibility: visible;
+}
+
+.quitarrow {
+    position:absolute;
+    left: -10vh;
+    top: 36vh;
+    visibility: hidden;
+}
+
+.quit:hover + .quitarrow{
+    visibility: visible;
+}
+
+
+.container {
+    position: absolute; 
+    width: 100vw;
+    height: 100vh; 
+    overflow: hidden;   
+}
+
+.bubble {
+    position: relative; 
+    display: flex;
+    gap: 60px;
+}
+
+
+
+
+.bubble span {
+    position: relative;
+    width: 12px; 
+    height: 12px; 
+    background: #f8d6ff; 
+    margin: 0 4px;
+    z-index: 100;   
+    animation: animate 15s linear infinite;
+    animation-duration: calc(400s / var(--i))
+}
+
+.bubble span:nth-child(even) {
+    background: #fabee4; 
+}
+
+
+@keyframes animate 
+{
+0% {
+    transform: translateY(0vh);   
+}
+100%
+{
+    transform: translateY(110vh);
+}
+}
