@@ -6,21 +6,27 @@
     "vitals": [
         {
             "type_name": "Satiation",
-            "value": 100,
-            "decrease_rate": 5,
-            "bins": [0, 19, 59, 99, 100]
+            "value": 50,
+            "change_rate": -4,
+            "bins": [9, 39, 69, 100]
         },
         {
             "type_name": "Energy",
-            "value": 100,
-            "decrease_rate": 5,
-            "bins": [0, 19, 59, 99, 100]
+            "value": 50,
+            "change_rate": 3,
+            "bins": [9, 39, 69, 100]
         },
         {
             "type_name": "Happiness",
-            "value": 100,
-            "decrease_rate": 5,
-            "bins": [0, 19, 59, 99, 100]
+            "value": 50,
+            "change_rate": -3,
+            "bins": [9, 39, 69, 100]
+        },
+        {
+            "type_name": "Intellect",
+            "value": 50,
+            "change_rate": -3,
+            "bins": [9, 39, 69, 100]
         }
     ],
     "chat_history": []

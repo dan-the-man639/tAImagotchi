@@ -14,6 +14,8 @@ co = cohere.Client(COHERE_KEY)
 STOP_SEQUENCES = ["\n"]
 ACTIVITIES_PROMPT = '{"activities": ["Eat cake", "Listen to NSYNC", "Watch Back to the Future", "Go to McDonald\'s Play Palace"]} Change to some other nostalgic activities in the 1990s and early 2000s and only output json. Only resond with json.'
 
+BANNED_PHRASES = ["language", "model", "cohere"]
+
 class Pet:
     def __init__(self, name: str, is_alive: bool, age: int, emotion: int, vitals: list, chat_history: list):
         self.name = name
@@ -55,7 +57,15 @@ class Pet:
         for vital in self.vitals:
             complaint_prompts.append(vital.get_complaint_prompt())
         random_complaint = np.random.choice(complaint_prompts)
-        response = co.generate(prompt=random_complaint, temperature=0.9, stop_sequences=STOP_SEQUENCES)
+        try_again = True
+        while try_again:
+            response = co.generate(prompt=random_complaint, temperature=0.9, stop_sequences=STOP_SEQUENCES)
+            lower_case_response = response[0].text.lower()
+            for phrase in BANNED_PHRASES:
+                if phrase in lower_case_response:
+                    continue
+            try_again = False
+        # print(random_complaint)
         return response[0].text
     
     def decrease_random_vitals(self):
