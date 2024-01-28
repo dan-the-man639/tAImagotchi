@@ -46,3 +46,8 @@
     border: 1px solid red;
   }
   
+  .pet-name {
+    font-family: PressStart2P;
+    font-size: 2rem;
+    margin-left: -3rem;
+  }

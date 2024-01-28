@@ -34,6 +34,7 @@ function Interface() {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentImage((prevImage) => (prevImage + 1) % imageSources.length);
+      console.log(currentImage);
     }, 1000); // Change image every 1000 milliseconds (1 second)
 
     return () => clearInterval(intervalId); // Cleanup the interval on component unmount
@@ -119,7 +120,7 @@ console.log(aliveStatus);
   return (
       <div className='interface-display'>
         {aliveStatus && <div className='pet-display'>
-          <h1>Here is your pet</h1>
+          <h1 className="pet-name">Tai</h1>
           <img src={imageSources[currentImage]} alt={`Image ${currentImage + 1}`} />
         </div>}
         {!aliveStatus && 
