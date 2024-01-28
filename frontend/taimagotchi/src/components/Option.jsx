@@ -1,30 +1,11 @@
 import './Option.css';
 import { useState, useEffect } from 'react';
 
-function Option({ onTextChange }) {
+function Option() {
     const [option, setOption] = useState(['option 1', 'option 2', 'option 3', 'option 4']);
     let second = 1 * 1000;
 
-    const fetchDataPrompt = async () => {
-        try {
-            const response = await fetch('http://127.0.0.1:8000/generate-trigger');
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-
-            const result = await response.json();
-            onTextChange(result);
-
-            console.log(result);
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    };
-
     const fetchDataOption = async () => {
-        // generate new prompts
-        fetchDataPrompt();
-
         try {
             const response = await fetch('http://127.0.0.1:8000/generate-options');
             if (!response.ok) {
@@ -63,10 +44,7 @@ function Option({ onTextChange }) {
     };
 
     useEffect(() => {
-        
-
         const intervalId = setInterval(() => {
-            fetchDataPrompt();
             fetchDataOption();
         }, second);
 

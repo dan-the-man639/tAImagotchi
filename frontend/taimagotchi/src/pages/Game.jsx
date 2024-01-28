@@ -4,10 +4,8 @@ import './Game.css'
 import Option from '../components/Option';
 import TriggerBox from '../components/TriggerBox';
 
-import { useState, useEffect } from 'react';
 
 function Game() {
-  const [text, setText] = useState("");
 
   return (
     <div>
@@ -20,11 +18,11 @@ function Game() {
           <div className='top-panel'>
             <Stat />
             <Interface />
-            <Option onTextChange={setText}/>
+            <Option/>
           </div>
 
           <div className='bottom-panel'>
-            <TriggerBox text={text} setText={setText} /> {/* Pass text and setText to TriggerBox */}
+            <TriggerBox />
           </div>
         </div>
       </div>
