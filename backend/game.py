@@ -17,6 +17,9 @@ class Game:
         self.is_running = False
     
     def update(self):
+        if self.pet.vitals[0].value <= 0:
+            self.pet.is_alive = False
+            self.is_running = False
         self.pet.change_random_vitals()
     
     def get_pet_state(self):
