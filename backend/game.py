@@ -17,7 +17,8 @@ class Game:
         self.is_running = False
     
     def update(self):
-        print(self.pet.get_vitals()[1].value)
+        for vital in self.pet.vitals:
+            print(vital.get_type_name(), vital.value)
         print(self.pet.get_activities())
         if self.pet.vitals[0].value <= 0:
             self.pet.is_alive = False

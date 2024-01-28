@@ -61,15 +61,22 @@ function Option({ onTextChange }) {
     }
   };
 
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      // generate new prompts
+      fetchDataPrompt();
+
+      // generate new option
+      fetchDataOption();
+    }, 3000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+  
   const handleOnClick = (optionSelected) => {
     // make Post to send data
     postData(optionSelected);
 
-    // generate new prompts
-    fetchDataPrompt();
-
-    // generate new option
-    fetchDataOption();
   };
 
   return (

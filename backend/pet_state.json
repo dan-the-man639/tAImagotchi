@@ -7,25 +7,25 @@
         {
             "type_name": "Satiation",
             "value": 50,
-            "change_rate": -5,
+            "change_rate": -1,
             "bins": [9, 39, 69, 100]
         },
         {
             "type_name": "Energy",
             "value": 50,
-            "change_rate": 5,
+            "change_rate": 1,
             "bins": [9, 39, 69, 100]
         },
         {
             "type_name": "Happiness",
             "value": 50,
-            "change_rate": -5,
+            "change_rate": -1,
             "bins": [9, 39, 69, 100]
         },
         {
             "type_name": "Intellect",
             "value": 50,
-            "change_rate": -5,
+            "change_rate": -1,
             "bins": [9, 39, 69, 100]
         }
     ],
