@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
-//hp: current HP
-//dif: newHP - current HP
+// hp: current HP
+// dif: newHP - current HP
 
 function Stat({ statItem, value }) {
     const numParitions = 10;

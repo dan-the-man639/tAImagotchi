@@ -10,7 +10,7 @@ function Menu() {
 let navigate = useNavigate();
 
   const goToHomePage = () => {
-    navigate('/game');
+    navigate('/');
   };
 
   return (
