@@ -74,18 +74,23 @@ class Pet:
             complaint_prompts.append(vital.get_complaint_prompt())
         random_complaint = np.random.choice(complaint_prompts)
         while True:
+            print('generating dialogue')
             try_again = False
-            response = co.generate(prompt=random_complaint, temperature=0.9, end_sequences=END_SEQUENCES)
-            response_text = response[0].text
-            start_quote_idx = response_text.find("\"")
-            response_text = response_text[start_quote_idx + 1:]
-            end_quote_idx = response_text.find("\"")
-            response_text = response_text[:end_quote_idx]
-            
-            lower_case_response = response_text
-            for phrase in BANNED_PHRASES:
-                if phrase in lower_case_response or len(response_text) > 40:
-                    try_again = True
+            responses = co.generate(prompt=random_complaint, temperature=0.9, end_sequences=END_SEQUENCES)
+            for response in responses:
+                response_text = response.text
+                start_quote_idx = response_text.find("\"")
+                response_text = response_text[start_quote_idx + 1:]
+                end_quote_idx = response_text.find("\"")
+                response_text = response_text[:end_quote_idx]
+                
+                lower_case_response = response_text
+                for phrase in BANNED_PHRASES:
+                    if phrase in lower_case_response or len(response_text) > 200:
+                        do_next = True
+                if not do_next:
+                    try_again = False
+                    break
             if try_again:
                 continue
             else:
