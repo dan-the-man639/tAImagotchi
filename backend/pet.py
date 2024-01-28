@@ -78,6 +78,7 @@ class Pet:
             try_again = False
             responses = co.generate(prompt=random_complaint, temperature=0.9, end_sequences=END_SEQUENCES)
             for response in responses:
+                do_next = False
                 response_text = response.text
                 start_quote_idx = response_text.find("\"")
                 response_text = response_text[start_quote_idx + 1:]
