@@ -17,10 +17,13 @@ class Game:
         self.is_running = False
     
     def update(self):
+        print(self.pet.get_vitals()[1].value)
+        print(self.pet.get_activities())
         if self.pet.vitals[0].value <= 0:
             self.pet.is_alive = False
             self.is_running = False
         self.pet.change_random_vitals()
+        
     
     def get_pet_state(self):
         return self.pet.to_dict()

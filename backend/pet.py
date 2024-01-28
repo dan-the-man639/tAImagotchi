@@ -28,7 +28,7 @@ INTELLECT_AVG_PROJ = 0.17589
 
 AVG_PROJ_LENS = [SATIATION_AVG_PROJ, ENERGY_AVG_PROJ, HAPPINESS_AVG_PROJ, INTELLECT_AVG_PROJ]
 
-VITAL_DEFAULT_CHANGE_RATE = 5
+VITAL_DEFAULT_CHANGE_RATE = -1
 
 class Pet:
     def __init__(self, name: str, is_alive: bool, age: int, emotion: int, vitals: list, chat_history: list):
@@ -94,10 +94,10 @@ class Pet:
         return response_text
     
     def change_random_vitals(self):
-        depression_factor = self.vitals[1].get_bin()
+        depression_factor = self.vitals[2].get_bin()
         for vital in self.vitals:
             if (vital.get_type_name() != "Energy"):
-                vital.set_change_rate(VITAL_DEFAULT_CHANGE_RATE - depression_factor)
+                vital.set_change_rate(VITAL_DEFAULT_CHANGE_RATE - depression_factor / 2)
             vital.change_random()
     
     def get_activities(self) -> list:
