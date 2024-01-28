@@ -7,11 +7,29 @@ import Happy2 from '../assets/happy2.png';
 import Sad1 from '../assets/sad1.png';
 import Sad2 from '../assets/sad2.png';
 
+import Death1 from '../assets/Dead1.png';
+import Death2 from '../assets/Dead2.png';
+import Death3 from '../assets/Dead3.png';
+import Death4 from '../assets/Dead4.png';
+import Death5 from '../assets/Ghost1.png';
+import Death6 from '../assets/Ghost1.png';
+
 function Interface() {
   const [currentImage, setCurrentImage] = useState(0);
   const [mood, setMood] = useState('neutral'); // Default mood is neutral
   const imageSources = getImageSources(mood);
   const [data, setData] = useState(null); //for storing api data
+
+  const [aliveStatus, setAliveStatus] = useState(true);//for tracking if tai is alive or not
+  const [currentDeathImage, setCurrentDeathImage] = useState(0);
+  const deathImages= [
+    Death1,
+    Death2,
+    Death3,
+    Death4,
+    Death5,
+    Death6
+  ];
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -35,9 +53,9 @@ function Interface() {
 
   // Function to handle mood change-------------------------
   const handleMoodChange = (newMood) => {
-    if(newMood == 0){
+    if (newMood == 0) {
       setMood('happy');
-    } else if (newMood == 2){
+    } else if (newMood == 2) {
       setMood('sad');
     } else {
       setMood('neutral');
@@ -46,7 +64,7 @@ function Interface() {
     setCurrentImage(0);
   };
 
- // Function that grabes api---------------
+  // Function that grabes api---------------
   const fetchData = async () => {
     try {
       const response = await fetch('http://127.0.0.1:8000/get-state');
@@ -59,8 +77,8 @@ function Interface() {
       // Check if the result indicates a change in mood
       if (result && result.is_alive && result.emotion !== result.emotion) {
         handleMoodChange(result.mood);
-      } else if(result.is_alive == false){
-        let aliveStatus = false
+      } else if (result.is_alive == false) {
+        setAliveStatus(false);
       }
 
       setData(result);
@@ -80,18 +98,31 @@ function Interface() {
     return () => clearInterval(intervalId);
   }, []);
 
-    //if result change than handle the state
+
+
+  useEffect(() => {
+    let intervalId;
+
+    if (aliveStatus) {
+      intervalId = setInterval(() => {
+        setCurrentImage((prevImage) => (prevImage + 1) % deathImages.length);
+      }, 1000); 
+    }
+
+    return () => clearInterval(intervalId); // Cleanup the interval on component unmount
+  }, [aliveStatus, deathImages]);
     
 
   return (
-    <div className='interface-display'>
-      <div className='pet-display'>
-        <h1>Here is your pet</h1>
-        <img src={imageSources[currentImage]} alt={`Image ${currentImage + 1}`} />
+      <div className='interface-display'>
+        {aliveStatus && <div className='pet-display'>
+          <h1>Here is your pet</h1>
+          <img src={imageSources[currentImage]} alt={`Image ${currentImage + 1}`} />
+        </div>}
+        {!aliveStatus && 
+        <img src={deathImages[currentDeathImage]} alt={`Image ${currentDeathImage + 1}`} />}
       </div>
-      
-    </div>
-  );
-}
+    );
+  }
 
-export default Interface;
+  export default Interface;

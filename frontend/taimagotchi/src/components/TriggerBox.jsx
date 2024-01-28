@@ -34,7 +34,7 @@ function TriggerBox() {
     <div class="parent">
       <div class="background">
         <div class="text">
-            <ReactTyped strings={[text]} typeSpeed={40} />
+            {/* <ReactTyped strings={[text]} typeSpeed={40} /> */}
         </div>
       </div>
     </div>
