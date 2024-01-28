@@ -1,11 +1,17 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Game from './pages/Game'
+import Menu from './pages/Menu'
 
 function App() {
   return (
     <div>
-      <Game/>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/menu' element={<Menu/>}></Route>
+          <Route path='/game' element={<Game/>}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
