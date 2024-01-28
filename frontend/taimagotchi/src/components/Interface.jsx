@@ -12,7 +12,7 @@ import Death2 from '../assets/Dead2.png';
 import Death3 from '../assets/Dead3.png';
 import Death4 from '../assets/Dead4.png';
 import Death5 from '../assets/Ghost1.png';
-import Death6 from '../assets/Ghost1.png';
+import Death6 from '../assets/Ghost2.png';
 
 function Interface() {
   const [currentImage, setCurrentImage] = useState(0);
@@ -102,18 +102,21 @@ function Interface() {
 
 
   useEffect(() => {
-    let xd;
+    let intervalId1;
 
     if (aliveStatus) {
-      xd = setInterval(() => {
-        setCurrentImage((prevImage) => (prevImage + 1) % deathImages.length);
+      intervalId1 = setInterval(() => {
+        setCurrentDeathImage((prevImage) => (prevImage + 1) % deathImages.length);
       }, 1000); 
     }
 
-    return () => clearInterval(xd); // Cleanup the interval on component unmount
+    return () => clearInterval(intervalId1); // Cleanup the interval on component unmount
   }, [aliveStatus, deathImages]);
     
-
+console.log("interface debug");
+console.log(currentImage);
+console.log(currentDeathImage);
+console.log(aliveStatus);
   return (
       <div className='interface-display'>
         {aliveStatus && <div className='pet-display'>
