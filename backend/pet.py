@@ -11,10 +11,10 @@ load_dotenv()
 COHERE_KEY = os.getenv('COHERE')
 co = cohere.Client(COHERE_KEY)
 
-STOP_SEQUENCES = ["\n"]
+END_SEQUENCES = ["How", "There", "Would"]
 ACTIVITIES_PROMPT = '{"activities": ["Eat cake", "Listen to NSYNC", "Watch Back to the Future", "Go to McDonald\'s Play Palace"]} Change to some other nostalgic activities in the 1990s and early 2000s and only output json. Only resond with json.'
 
-BANNED_PHRASES = ["language", "model", "cohere", "request", "pet"]
+BANNED_PHRASES = ["language", "model", "cohere", "request", "sure"]
 
 class Pet:
     def __init__(self, name: str, is_alive: bool, age: int, emotion: int, vitals: list, chat_history: list):
@@ -57,16 +57,25 @@ class Pet:
         for vital in self.vitals:
             complaint_prompts.append(vital.get_complaint_prompt())
         random_complaint = np.random.choice(complaint_prompts)
-        try_again = True
-        while try_again:
-            response = co.generate(prompt=random_complaint, temperature=0.9, stop_sequences=STOP_SEQUENCES)
-            lower_case_response = response[0].text.lower()
+        while True:
+            try_again = False
+            response = co.generate(prompt=random_complaint, temperature=0.9, end_sequences=END_SEQUENCES)
+            response_text = response[0].text
+            start_quote_idx = response_text.find("\"")
+            response_text = response_text[start_quote_idx + 1:]
+            end_quote_idx = response_text.find("\"")
+            response_text = response_text[:end_quote_idx]
+            
+            lower_case_response = response_text
             for phrase in BANNED_PHRASES:
                 if phrase in lower_case_response:
-                    continue
-            try_again = False
+                    try_again = True
+            if try_again:
+                continue
+            else:
+                break
         # print(random_complaint)
-        return response[0].text
+        return response_text
     
     def change_random_vitals(self):
         for vital in self.vitals:
@@ -74,7 +83,7 @@ class Pet:
     
     def get_activities(self):
         message = "generate another, only give the json" if self.chat_history else ACTIVITIES_PROMPT
-        response = co.chat(message=message, chat_history=self.chat_history, temperature=0.85)
+        response = co.chat(message=message, chat_history=self.chat_history, temperature=0.9)
         edited_text = response.text.replace("```", "").replace("json", "")
         try_again = True
         while try_again:
@@ -87,5 +96,5 @@ class Pet:
                 edited_text = response.text.replace("```", "").replace("json", "")
         self.chat_history.append({"role": "USER", "text": message})
         self.chat_history.append({"role": "CHATPOT", "text": edited_text})
-        
+        print(activities)
         return activities

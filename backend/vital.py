@@ -6,8 +6,8 @@ vital bins: zero, very low, low, high, full
 
 VITAL_DECREASE_STDEV = 2
 
-BASE_PROMPT = "There is a cute pet that"
-END_PROMPT = "What would that pet say? Give the short direct response only and nothing else."
+BASE_PROMPT = "Act as if you are a cute pet. Say something that shows"
+END_PROMPT = "Wrap the quote in quotation marks. Do not say sure thing."
 
 class Vital:
     def __init__(self, value: int, change_rate: int, bins: list):
@@ -64,40 +64,40 @@ class Satiation(Vital):
     def __init__(self, value: int, change_rate: int, bins: list):
         super().__init__(value, change_rate, bins)
         self.complaint_prompts = [
-            "is about to starve to death.",
-            "is hungry in a negative way.",
-            "is mildly hungry.",
-            "feels very full but in a positive way."
+            "that you are about to starve to death",
+            "that you are really hungry.",
+            "you are mildly hungry but okay for now.",
+            "that you feel very full but in a positive way."
         ]
 
 class Energy(Vital):
     def __init__(self, value: int, change_rate: int, bins: list):
         super().__init__(value, change_rate, bins)
         self.complaint_prompts = [
-            "is going to collapse and fall asleep any minute.",
-            "is tired.",
-            "feels moderately awake.",
-            "feels extremely full of energy."
+            "that you are going to fall asleep any second",
+            "that you feel pretty tired.",
+            "that you feel moderately awake.",
+            "that you are extremely full of energy."
         ]
 
 class Happiness(Vital):
     def __init__(self, value: int, change_rate: int, bins: list):
         super().__init__(value, change_rate, bins)
         self.complaint_prompts = [
-            "feels extremely depressed.",
-            "feels kind of sad.",
-            "feels moderately happy and content.",
-            "feels beyond happy and joyful and love life."
+            "that you are extremely depressed.",
+            "that you are kind of sad.",
+            "that you are reasonably happy and content.",
+            "that you are beyond happy and joyful and love life."
         ]
 
 class Intellect(Vital):
     def __init__(self, value: int, change_rate: int, bins: list):
         super().__init__(value, change_rate, bins)
         self.complaint_prompts = [
-            "is extremely dumb.",
-            "is kind of dumb.",
-            "is reasonably smart.",
-            "is a genius"
+            "that you are extremely dumb, borderline moronic.",
+            "that you are kind of dumb.",
+            "that you are reasonably smart.",
+            "how smart you feel without being boastful."
         ]
 
     
