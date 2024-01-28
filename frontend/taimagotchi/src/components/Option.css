@@ -2,12 +2,18 @@
     display: flex;
     flex-direction: column;
     gap: 10px; /* Adjust the gap between buttons as needed */
+    margin-top: 1rem;
   }
   
   button {
+    font-family: PressStart2P;
+    /* border: 3px solid red; */
+    border: none;
     padding: 10px;
     height: 15vh;
-    font-size: 10px;
+    font-size: 15px;
+    padding-left: 90px;
+    padding-right: 50px;
 
     background-image: url(../assets/optionsbox.png);
     background-size: 100% 100%;
@@ -15,6 +21,7 @@
     background-position: center;
 
     background-color: transparent;
+    cursor: pointer;
     
   }
   

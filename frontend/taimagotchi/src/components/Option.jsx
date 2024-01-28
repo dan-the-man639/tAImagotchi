@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 function Option() {
     const [option, setOption] = useState(['option 1', 'option 2', 'option 3', 'option 4']);
     const temp = ['option 1', 'option 2', 'option 3', 'option 4'];
-    let second = 1 * 1000;
+    let second = 5 * 1000;
 
     const fetchDataOption = async () => {
         try {
@@ -64,7 +64,7 @@ function Option() {
 
     return (
         <div className='option-main'>
-            <h1>Option box</h1>
+
             <div className="button-display">
                 {option.map((item, index) => (
                     <button className='option-item' onClick={() => handleOnClick(item)} key={index}>{item}</button>
