@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import StatBar from './StatBar'
 
 function Stat() {
+  let second = 4 * 1000;
+
   const [statData, setStatData] = useState([
     { Type: "Satiation", Stat: 100 },
     { Type: "Energy", Stat: 100 },
@@ -24,7 +26,7 @@ function Stat() {
 
     // Call fetchStats immediately and then set an interval
     // fetchStats();
-    const intervalId = setInterval(fetchStats, 1000); // Fetch every 1000 milliseconds (1 second)
+    const intervalId = setInterval(fetchStats, second); // Fetch every 1000 milliseconds (1 second)
 
     // Cleanup function to clear the interval when component unmounts
     return () => clearInterval(intervalId);

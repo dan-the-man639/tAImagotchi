@@ -46,12 +46,10 @@ function Option() {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      // generate new prompts
-      fetchDataPrompt();
 
       // generate new option
       fetchDataOption();
-    }, 3000);
+    }, second);
 
     return () => clearInterval(intervalId);
   }, []);
