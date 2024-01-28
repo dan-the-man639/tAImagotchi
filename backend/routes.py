@@ -1,5 +1,6 @@
 # routes.py
 from fastapi import APIRouter
+from pydantic import BaseModel
 from shared import game  # Import game from the shared module
 
 router = APIRouter()
@@ -30,6 +31,12 @@ async def generate_trigger():
 async def generate_options():
     return game.get_activities()
 
+
+class ActionRequest(BaseModel):
+    action: str
+
 @router.post("/handle-action")
-async def handle_action():
-    return "Handled action"
+async def handle_action(request: ActionRequest):
+    action_string = request.action
+    # Waiting for Ricky's code
+    return {"message": "Action received"}
