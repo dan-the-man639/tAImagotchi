@@ -1,7 +1,7 @@
 import './Option.css';
 import { useState, useEffect } from 'react';
 
-function Option() {
+function Option({ setStatData }) {
     const [option, setOption] = useState(['option 1', 'option 2', 'option 3', 'option 4']);
     const temp = ['option 1', 'option 2', 'option 3', 'option 4'];
     let second = 5 * 1000;
