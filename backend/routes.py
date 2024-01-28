@@ -41,4 +41,5 @@ class ActionRequest(BaseModel):
 async def handle_action(request: ActionRequest):
     action_string = request.action
     # Waiting for Ricky's code
+    game.handle_activity(action_string)
     return {"message": "Action received"}
