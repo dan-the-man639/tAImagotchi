@@ -5,7 +5,7 @@
     margin-top: 1rem;
   }
   
-  button {
+.option-item {
     font-family: PressStart2P;
     /* border: 3px solid red; */
     border: none;
@@ -25,7 +25,7 @@
     
   }
   
-  button:hover {
+  .option-item:hover {
     transform: translateY(-5px);
   }
 

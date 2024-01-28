@@ -27,13 +27,16 @@
     left: 65%;
 }
 
-.button-menu {
+
+
+.menu-button {
     font-family: 'PressStart2P';
     background-color: transparent;
     border: transparent;
     display: block;
     font-size: 8vh;
     padding-bottom: 10vh;
+    cursor: pointer;
 }
 
 .options {
