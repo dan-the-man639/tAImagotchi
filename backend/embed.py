@@ -38,7 +38,8 @@ def calculate_proj_len(activity):
             cur_norm = np.linalg.norm(arr[i])
             sum += np.dot(activity_embedding, arr[i])/cur_norm
         avg = sum / len(arr) / len(activity_embedding)
-        proj_lens.append(avg)
+        proj_lens.append(float(avg))
+    print(proj_lens)
     return proj_lens
     
 

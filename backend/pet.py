@@ -5,6 +5,7 @@ import os
 from dotenv import load_dotenv
 import numpy as np
 import random
+from embed import calculate_proj_len
 
 load_dotenv()
 
@@ -24,6 +25,8 @@ SATIATION_AVG_PROJ = 0.20262
 ENERGY_AVG_PROJ = 0.20349
 HAPPINESS_AVG_PROJ = 0.23083
 INTELLECT_AVG_PROJ = 0.17589
+
+AVG_PROJ_LENS = [SATIATION_AVG_PROJ, ENERGY_AVG_PROJ, HAPPINESS_AVG_PROJ, INTELLECT_AVG_PROJ]
 
 class Pet:
     def __init__(self, name: str, is_alive: bool, age: int, emotion: int, vitals: list, chat_history: list):
@@ -115,5 +118,12 @@ class Pet:
         print(len(activities))
         return activities
     
-    def handle_interaction(self, activity: str) -> None:
-        
+    def handle_activity(self, activity: str) -> None:
+        activity_proj_lens = calculate_proj_len(activity)
+        for idx, vital in enumerate(self.vitals):
+            over = max(0, activity_proj_lens[idx] - AVG_PROJ_LENS[idx])
+            if vital.get_type_name == "Energy":
+                vital.set_value(vital.get_value() - over * 30)
+            else:
+                vital.set_value(vital.get_value() + over * 30)
+            

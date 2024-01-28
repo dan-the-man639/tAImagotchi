@@ -7,6 +7,6 @@ import json
 
 game = Game()
 game.reset()
-while True:
-    game.get_activities()
-    
+print(game.get_pet_state())
+game.handle_activity("Watch a movie")
+print(game.get_pet_state())
