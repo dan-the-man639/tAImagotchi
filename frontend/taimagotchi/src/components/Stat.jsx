@@ -11,22 +11,31 @@ function Stat() {
   ]);
 
   // useEffect(() => {
-  //   fetch("http://127.0.0.1:8000/get-stats")
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       setStatData(data);
-  //       console.log("data: ", data);
-  //     })
-  //     .catch(error => console.error('Error fetching data:', error));
+  //   const fetchStats = () => {
+  //     fetch("http://127.0.0.1:8000/get-stats")
+  //       .then(response => response.json())
+  //       .then(data => {
+  //         setStatData(data);
+  //         console.log("data: ", data);
+  //       })
+  //       .catch(error => console.error('Error fetching data:', error));
+  //   };
+
+  //   // Call fetchStats immediately and then set an interval
+  //   // fetchStats();
+  //   const intervalId = setInterval(fetchStats, 1000); // Fetch every 1000 milliseconds (1 second)
+
+  //   // Cleanup function to clear the interval when component unmounts
+  //   return () => clearInterval(intervalId);
   // }, []);
+
 
 
   return (
     <div className='stat-bar'>
       <StatBar statItem={statData[0].Type} value={statData[0].Stat}/>
-      {/* <StatBar statItem={statData[1].Type} hp={hpHydration}  onSetHp={setHpHydration} dif={statData[1].Stat - hpHydration}/>
-      <StatBar statItem={statData[2].Type} hp={hpEnergy}  onSetHp={setHpEnergy} dif={statData[2].Stat - hpEnergy}/>
-      <StatBar statItem={statData[3].Type} hp={hpSanity}  onSetHp={setHpSanity} dif={statData[3].Stat - hpSanity}/> */}
+      <StatBar statItem={statData[1].Type} value={statData[1].Stat}/>
+      <StatBar statItem={statData[2].Type} value={statData[2].Stat}/>
     </div>
   );
   }
