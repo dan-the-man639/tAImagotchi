@@ -10,9 +10,9 @@ function Game() {
   let second = 4 * 1000;
 
   const [statData, setStatData] = useState([
-    { Type: "Satiation", Stat: 100 },
-    { Type: "Energy", Stat: 100 },
-    { Type: "Happiness", Stat: 100 },
+    { Type: "Satiation", Stat: 50 },
+    { Type: "Energy", Stat: 50 },
+    { Type: "Happiness", Stat: 60 },
     { Type: "Intellect", Stat: 100 }
   ]);
 
@@ -27,6 +27,17 @@ function Game() {
         .catch(error => console.error('Error fetching data:', error));
     };
 
+    const resetGame = () => {
+      fetch("http://127.0.0.1:8000/reset-stats")
+        .then(response => response.json())
+        .then(data => {
+          setStatData(data);
+          
+        })
+        .catch(error => console.error('Error fetching data:', error));
+    };
+
+    resetGame();
     // Call fetchStats immediately and then set an interval
     // fetchStats();
     const intervalId = setInterval(fetchStats, second); // Fetch every 1000 milliseconds (1 second)
@@ -34,6 +45,8 @@ function Game() {
     // Cleanup function to clear the interval when component unmounts
     return () => clearInterval(intervalId);
   }, []);
+
+
 
   return (
     <div>

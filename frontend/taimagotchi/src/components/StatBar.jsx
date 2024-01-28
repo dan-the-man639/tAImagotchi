@@ -12,7 +12,9 @@ function Stat({ statItem, value }) {
 
     imageName = imageBasePath + "bar" + "_" + partitionValue + ".png";
 
-   
+    if (!value || value === null) {
+        return null; // Don't render anything if value is null
+    }
 
     let iconName = imageBasePath + statItem + "_icon.png";
  

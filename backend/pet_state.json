@@ -18,13 +18,13 @@
         },
         {
             "type_name": "Happiness",
-            "value": 50,
+            "value": 60,
             "change_rate": -1,
             "bins": [9, 39, 69, 100]
         },
         {
             "type_name": "Intellect",
-            "value": 50,
+            "value": 100,
             "change_rate": -1,
             "bins": [9, 39, 69, 100]
         }

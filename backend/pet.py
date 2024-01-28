@@ -86,8 +86,10 @@ class Pet:
                 response_text = response_text[:end_quote_idx]
                 
                 lower_case_response = response_text.lower()
+                if len(response_text) > 160:
+                    do_next = True
                 for phrase in BANNED_PHRASES:
-                    if phrase in lower_case_response or len(response_text) > 180:
+                    if phrase in lower_case_response:
                         do_next = True
                 if not do_next:
                     try_again = False
