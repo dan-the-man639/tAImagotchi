@@ -34,6 +34,7 @@ function Interface() {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentImage((prevImage) => (prevImage + 1) % imageSources.length);
+      console.log(currentImage);
     }, 1000); // Change image every 1000 milliseconds (1 second)
 
     return () => clearInterval(intervalId); // Cleanup the interval on component unmount
@@ -101,15 +102,15 @@ function Interface() {
 
 
   useEffect(() => {
-    let intervalId;
+    let xd;
 
     if (aliveStatus) {
-      intervalId = setInterval(() => {
+      xd = setInterval(() => {
         setCurrentImage((prevImage) => (prevImage + 1) % deathImages.length);
       }, 1000); 
     }
 
-    return () => clearInterval(intervalId); // Cleanup the interval on component unmount
+    return () => clearInterval(xd); // Cleanup the interval on component unmount
   }, [aliveStatus, deathImages]);
     
 

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 function TriggerBox() {
     const [text, setText] = useState("");
-    let second = 10 * 1000;
+    let second = 20 * 1000;
 
     const fetchDataPrompt = async () => {
         try {
@@ -34,7 +34,7 @@ function TriggerBox() {
     <div class="parent">
       <div class="background">
         <div class="text">
-            <ReactTyped strings={[text]} typeSpeed={100} />
+            <ReactTyped strings={[text]} typeSpeed={50} />
         </div>
       </div>
     </div>
