@@ -8,12 +8,12 @@
 .background {
     box-sizing: border-box;
     padding: 2rem;
-    padding-top: 2.25rem;
-    width: 32rem;
+    padding-top: 2.5rem;
+    width: 61rem;
     height: 10rem;
     align-content: center;
     background-image: url(../assets/dialogue-box-empty.png);
-    background-size: 500px 150px;
+    background-size: 1000px 150px;
     /* background-size: contain; */
     background-repeat: no-repeat;
     background-position: center;

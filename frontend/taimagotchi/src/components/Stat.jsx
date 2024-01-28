@@ -1,3 +1,4 @@
+import "./Stat.css";
 
 import { useState, useEffect } from 'react';
 import StatBar from './StatBar'
