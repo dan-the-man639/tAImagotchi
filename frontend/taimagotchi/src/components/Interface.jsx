@@ -116,7 +116,7 @@ function Interface() {
   return (
       <div className='interface-display'>
         {aliveStatus && <div className='pet-display'>
-          <h1>Here is your pet</h1>
+          <h1 className="pet-name">Tai</h1>
           <img src={imageSources[currentImage]} alt={`Image ${currentImage + 1}`} />
         </div>}
         {!aliveStatus && 
