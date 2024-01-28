@@ -84,7 +84,7 @@ class Pet:
             
             lower_case_response = response_text
             for phrase in BANNED_PHRASES:
-                if phrase in lower_case_response:
+                if phrase in lower_case_response or len(response_text) > 40:
                     try_again = True
             if try_again:
                 continue
@@ -97,7 +97,9 @@ class Pet:
         depression_factor = self.vitals[2].get_bin()
         for vital in self.vitals:
             if (vital.get_type_name() != "Energy"):
-                vital.set_change_rate(VITAL_DEFAULT_CHANGE_RATE - depression_factor / 2)
+                print("change: ",depression_factor // 2)
+                vital.set_change_rate(VITAL_DEFAULT_CHANGE_RATE - depression_factor // 2)
+            print(vital.change_rate)
             vital.change_random()
     
     def get_activities(self) -> list:
@@ -129,7 +131,6 @@ class Pet:
         
         if random.random() < 0.4:
             activities[random.randint(0, len(activities) - 1)] = FOOD_ACTIVITIES[random.randint(0, len(FOOD_ACTIVITIES) - 1)]
-        print(len(activities))
         return activities
     
     def handle_activity(self, activity: str) -> None:

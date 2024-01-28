@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: center;
     width: 75vw;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     height: 100%;
 }
 
@@ -16,7 +16,7 @@
     background-color: transparent; /* Clear background */
     padding: 20px;
     height: 80vh;
-    border: 1px solid pink;
+    /* border: 1px solid pink; */
   }
   
   .pet-display h1 {

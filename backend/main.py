@@ -26,7 +26,7 @@ async def run_game():
     game.start()
     while game.is_running:
         game.update()
-        await asyncio.sleep(5) # seconds per game cycle
+        await asyncio.sleep(1) # seconds per game cycle
 
 def get_game():
     return game
