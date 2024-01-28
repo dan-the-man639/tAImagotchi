@@ -7,7 +7,7 @@ vital bins: zero, very low, low, high, full
 VITAL_DECREASE_STDEV = 2
 
 BASE_PROMPT = "There is a cute pet that"
-END_PROMPT = "What would that pet say? Give the short direct response and don't mention being a language model"
+END_PROMPT = "What would that pet say? Give the short direct response only and nothing else."
 
 class Vital:
     def __init__(self, value: int, change_rate: int, bins: list):
@@ -53,7 +53,7 @@ class Vital:
     def get_complaint_prompt(self) -> str:
         return BASE_PROMPT + self.complaint_prompts[self.get_bin()] + END_PROMPT
     
-    def random_change(self) -> None:
+    def change_random(self) -> None:
         change_amount = np.random.normal(self.change_rate, VITAL_DECREASE_STDEV)
         raw_value = np.floor(self.value + change_amount)
         raw_value = max(raw_value, 0)

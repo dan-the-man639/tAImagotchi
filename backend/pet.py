@@ -14,7 +14,7 @@ co = cohere.Client(COHERE_KEY)
 STOP_SEQUENCES = ["\n"]
 ACTIVITIES_PROMPT = '{"activities": ["Eat cake", "Listen to NSYNC", "Watch Back to the Future", "Go to McDonald\'s Play Palace"]} Change to some other nostalgic activities in the 1990s and early 2000s and only output json. Only resond with json.'
 
-BANNED_PHRASES = ["language", "model", "cohere"]
+BANNED_PHRASES = ["language", "model", "cohere", "request", "pet"]
 
 class Pet:
     def __init__(self, name: str, is_alive: bool, age: int, emotion: int, vitals: list, chat_history: list):
@@ -68,9 +68,9 @@ class Pet:
         # print(random_complaint)
         return response[0].text
     
-    def decrease_random_vitals(self):
+    def change_random_vitals(self):
         for vital in self.vitals:
-            vital.decrease_random()
+            vital.change_random()
     
     def get_activities(self):
         message = "generate another, only give the json" if self.chat_history else ACTIVITIES_PROMPT
